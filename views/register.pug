@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Sign Up
+
+        // register form
+        form(method='POST' action='/register')
+          div.form-group
+            label(for='name') Name:
+            input#name.form-control(type='text', placeholder='first and last' name='name')
+          div.form-group
+            label(for='email') Email:
+            input#email.form-control(type='email', placeholder='name@email.com' name='email')
+          div.form-group
+            label(for='phone') Phone:
+            input#phone.form-control(type='phone', placeholder='037++++++' name='phone')
+          div.form-group
+            label(for='city') City:
+            select#city.form-control(type='city', name='city')
+              option Jakarta Utara
+              option Jakarta Pusat
+              option Jakarta Selatan
+              option Jakarta Barat
+              option Jakarta Timur
+              option Other
+          div.form-group
+            label(for='place') Place:
+            input#place.form-control(type='place', placeholder='Search Place' name='place' list='suggestions')
+            datalist#suggestions
+              option Hotel Neo Soho
+              option Tendean Residen
+          input.btn.btn-primary(class='button_green', type='submit',value='Submit')
+  
