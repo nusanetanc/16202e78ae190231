@@ -1,6 +1,9 @@
 var express = require('express');
+var each = require('foreach');
 var router = express.Router();
-var Location = require('../models/location');
+var Village = require('../models/villages');
+var Streets = require('../models/streets');
+var NoStreets = require('../models/nostreets');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,9 +11,29 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET location listing. */
-router.get('/city/:city', function(req, res, next) {
-    Location.findOne({city: req.params.city}, function(err, locations) {
-       console.log( locations );
+router.get('/subdistric/:subdistric', function(req, res, next) {
+    Village.find({subdistric: req.params.subdistric}, { villages: 1, _id: 0},  function(err, villages) {
+      res.send(villages);
+   });
+});
+
+/* GET location listing. */
+router.get('/villages/:villages', function(req, res, next) {
+    Streets.find({villages: req.params.villages}, { streets: 1, _id: 0},  function(err, streets) {
+      res.send(streets);
+   });
+});
+
+/* GET location listing. */
+router.get('/streets/:streets', function(req, res, next) {
+    NoStreets.find({streets: req.params.streets}, { nostreets: 1, _id: 0},  function(err, nostreets) {
+      res.send(nostreets);
+   });
+});
+
+/* GET location listing. */
+router.get('/list', function(req, res, next) {
+    Village.find({ villages: 1, _id: 0}, function(err, locations) {
        res.json(locations);
    });
 });

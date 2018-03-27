@@ -10,11 +10,14 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var config = require('./config/database');
+var fileUpload = require('express-fileupload');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var location = require('./routes/location');
 var package = require('./routes/package');
+
+
 
 // Bring in Models
 //var Article = require('./models/article');
@@ -40,6 +43,7 @@ app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(fileUpload());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

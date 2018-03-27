@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 // User Schema
 var RegisSchema = mongoose.Schema({
-  name:{
+  fullname:{
     type: String,
     required: true
   },
@@ -14,11 +14,19 @@ var RegisSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  city:{
+  mobilephone:{
+    type: Number,
+    required: true
+  },
+  place:{
     type: String,
     required: true
   },
-  place: {
+  package: {
+    type: String,
+    required: true
+  },
+  ktpurl: {
     type: String,
     required: true
   }
