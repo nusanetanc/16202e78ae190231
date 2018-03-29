@@ -115,14 +115,10 @@ router.get('/broadband-fiber-optic', function(req, res, next) {
   res.render('broadband-fiber-optic', { title: 'Broadband Fiber Optic - Nusanet Jakarta' });
 });
 
-/* GET Broadband fiber registration page. */
-router.get('/broadband-fiber-optic/registration2/:package', function(req, res, next) {
-    res.render('register-broadband-fiber-optic', { title: 'Registration - Nusanet Jakarta', selectpackage: req.params.package });
-});
 
 /* GET Broadband fiber registration page. */
 router.get('/broadband-fiber-optic/registration/:package', function(req, res, next) {
-    res.render('register-broadband-fiber-optic2', { title: 'Registration - Nusanet Jakarta', selectpackage: req.params.package });
+    res.render('register-broadband-fiber-optic', { title: 'Registration - Nusanet Jakarta', selectpackage: req.params.package });
 });
 
 /* GET Corporate Radio Wireless. */
@@ -147,16 +143,9 @@ router.get('/corporate-fiber-optic', function(req, res, next) {
 
 /* GET Corporate Fiber Optic. */
 router.get('/register-success', function(req, res, next) {
-  res.render('register-success', { title: 'Registration SUccess - Nusanet Jakarta', message : req.flash('result') });
+  res.render('register-success', { title: 'Registration Success - Nusanet Jakarta', message : req.flash('result') });
 });
 
-/* GET home page. */
-router.get('/listregister', function(req, res, next) {
-  Register.find(function(err, registers) {
-       console.log( registers );
-       res.json(registers);
-   });
-});
 
 
 // Add Submit POST Route
@@ -175,15 +164,19 @@ router.post('/broadband-fiber-optic/registration/:selectpackage', function(req, 
      // selectpackage: req.params.selectpackage
    // });
  // } else {
-    var ktpFile = req.files.ktpFile;
-    var fullName = req.body.fullname;
-    // Use the mv() method to place the file somewhere on your server
-    ktpFile.mv('./uploads/'+fullName+'.jpg', function(err) {
-      if (err)
-        return res.status(500).send(err);
-   
-      console.log('KTP upload succesfully');
-    });
+    let ktpFile = req.files.ktpFile;
+    let fullName = req.body.fullname;
+    if (ktpFile == undefined ){
+      console.log("no ktp uploaded")
+    }else {
+      // Use the mv() method to place the file somewhere on your server
+      ktpFile.mv('./uploads/'+fullName+'.jpg', function(err) {
+        if (err)
+          return res.status(500).send(err);
+     
+        console.log('KTP upload succesfully');
+      });
+    }
     //var fileKtp = req.files.uploadKTP
     //var saveFile = fileKtp.mv('./public/images/ktp/'+req.body.fullname+'.png');
     var mailOptions={
