@@ -86,7 +86,7 @@ function selectSubdistric() {
         $("#formstreets").hide();
         $("#formstreetnos").hide();
     }else {
-        $.getJSON("https://nsnt2018-purwanto1337.c9users.io/location/subdistric/"+selectedArr, function(json){
+        $.getJSON("http://jkt.nusa.net.id:3000/location/subdistric/"+selectedArr, function(json){
             var arrVillage = json;
             arrVillage.forEach(Villagefunc);
         });
@@ -116,7 +116,7 @@ function selectVillage() {
         $("#formstreets").hide();
         $("#formstreetnos").hide();
     }else {
-        $.getJSON("https://nsnt2018-purwanto1337.c9users.io/location/villages/"+selectedArr, function(json){
+        $.getJSON("http://jkt.nusa.net.id:3000/location/villages/"+selectedArr, function(json){
             var arrStreet = json;
             arrStreet.forEach(Streetfunc);
         });
@@ -146,7 +146,7 @@ function selectStreet() {
         $("#formstreets").show();
         $("#formstreetnos").hide();
     }else {
-        $.getJSON("https://nsnt2018-purwanto1337.c9users.io/location/streets/"+selectedArr, function(json){
+        $.getJSON("http://jkt.nusa.net.id:3000/location/streets/"+selectedArr, function(json){
             var arrStreetNo = json;
             arrStreetNo.forEach(StreetNofunc);
         });
