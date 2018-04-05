@@ -14,7 +14,7 @@ var fileUpload = require('express-fileupload');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var location = require('./routes/location');
+//var location = require('./routes/location');
 var package = require('./routes/package');
 
 
@@ -96,7 +96,7 @@ app.get('*', function(req, res, next){
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/location', location);
+//app.use('/location', location);
 app.use('/package', package);
 
 // catch 404 and forward to error handler

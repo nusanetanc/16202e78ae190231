@@ -1,11 +1,15 @@
 var express = require('express');
 var nodemailer = require("nodemailer");
+var each = require('foreach');
 var flash = require('express-flash');
 var path = require("path");
 
 var router = express.Router();
 var Register = require('../models/register');
 var Subscribe = require('../models/subscribe');
+var Village = require('../models/villages');
+var Streets = require('../models/streets');
+var NoStreets = require('../models/nostreets');
 
 
 var smtpTransport = nodemailer.createTransport({
@@ -437,4 +441,51 @@ router.post('/careers', function(req, res){
   }
 });
 
+
+//location api
+
+/* GET location listing. */
+router.get('/location/subdistric/:subdistric', function(req, res, next) {
+    Village.find({subdistric: req.params.subdistric}, { villages: 1, _id: 0},  function(err, villages) {
+      res.send(villages);
+   });
+});
+
+/* GET location listing. */
+router.get('/location/villages/:villages', function(req, res, next) {
+    Streets.find({villages: req.params.villages}, { streets: 1, _id: 0},  function(err, streets) {
+      res.send(streets);
+   });
+});
+
+/* GET location listing. */
+router.get('/location/streets/:streets', function(req, res, next) {
+    NoStreets.find({streets: req.params.streets}, { nostreets: 1, _id: 0},  function(err, nostreets) {
+      res.send(nostreets);
+   });
+});
+
+/* GET location listing. */
+router.get('/location/list', function(req, res, next) {
+    Village.find({ villages: 1, _id: 0}, function(err, locations) {
+       res.json(locations);
+   });
+});
+
+
+//Page not found
+
+// Handle 404
+  router.use(function(req, res) {
+      res.status(404);
+     res.render('404', {title: '404: File Not Found'});
+  });
+  
+  // Handle 500
+  router.use(function(error, req, res, next) {
+      res.status(500);
+     res.render('500', {title:'500: Internal Server Error', error: error});
+  });
+  
+  
 module.exports = router;
