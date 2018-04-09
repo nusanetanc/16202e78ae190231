@@ -4,23 +4,30 @@ block content
   div(style="background-color:#fff;margin-top:-100px;height:100px")
   
   .register-page
-    .register-form-wrapper.col-12
-      h4(style="text-align:center;") Contact Us
-      h6(style="text-align:center;") We’re here to help when you need us. Our 24/7 live chat support is ready to answer your questions. You can also send us an email, and we’ll answer within 24 hours.
-      form(method='POST', class="register-form", action='/contact')
-          div.form-group
-            label(for='name') Name:
-            input#name.form-control(type='text', placeholder='Full Name' name='name')
-          div.form-group
-            label(for='email') Email:
-            input#email.form-control(type='email', placeholder='name@email.com' name='email')
-          div.form-group
-            label(for='phone') Phone:
-            input#phone.form-control(type='phone', placeholder='021++++++' name='phone')
-          div.form-group
-            label(for='message') Message:
-            textarea#message.form-control(rows="5" name="someTextArea")
-          input.btn.btn-primary(class='nusa-button', type='submit',value='SUBMIT')
+    .register-form-wrapper
+      .row
+        .col-12.col-lg-6
+          h4(style="text-align:center;") Contact Us
+          h6(style="text-align:center;") We’re here to help when you need us. Our 24/7 live chat support is ready to answer your questions. You can also send us an email, and we’ll answer within 24 hours.
+          h4 24/7 Helpdesk Support
+          p Phone : 021 – 5276616<br/>SMS : 0819 8 54321<br/>WhatsApp : 0812 8691 1930<br/>Email : <a style="color:#444;" href="mailto:helpdesk@jkt.nusa.net.id">helpdesk@jkt.nusa.net.id</a>
+          
+        .col-12.col-lg-6
+          form(method='POST', class="register-form", action='/contact')
+              div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', placeholder='Full Name' name='name')
+              div.form-group
+                label(for='email') Email:
+                input#email.form-control(type='email', placeholder='name@email.com' name='email')
+              div.form-group
+                label(for='phone') Phone:
+                input#phone.form-control(type='phone', placeholder='021++++++' name='phone')
+              div.form-group
+                label(for='message') Message:
+                textarea#message.form-control(rows="5" name="someTextArea")
+              input.btn.btn-primary(class='nusa-button', type='submit',value='SUBMIT')
+          
   div(class="nusanet-newsletter-wrapper")
       div(class="row align-items-center nusanet-newsletter")
         div(class="col-12 col-sm-6")
