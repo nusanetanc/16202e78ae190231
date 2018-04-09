@@ -6,14 +6,16 @@ block content
   .register-page
     .container
       .row
-        .col-12.col-lg-6
+        .col-12.col-lg-6(style="padding-right:3rem;")
           h4 Contact Us
           h6 We’re here to help when you need us. Our 24/7 live chat support is ready to answer your questions. You can also send us an email, and we’ll answer within 24 hours.
+          br
+          br
           h4 24/7 Helpdesk Support
           p Phone : 021 – 5276616<br/>SMS : 0819 8 54321<br/>WhatsApp : 0812 8691 1930<br/>Email : <a style="color:#444;" href="mailto:helpdesk@jkt.nusa.net.id">helpdesk@jkt.nusa.net.id</a>
           
         .col-12.col-lg-6
-          form(method='POST', class="register-form", action='/contact')
+          form(method='POST', action='/contact')
               div.form-group
                 label(for='name') Name:
                 input#name.form-control(type='text', placeholder='Full Name' name='name')
