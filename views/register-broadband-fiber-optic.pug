@@ -79,7 +79,7 @@ block content
               label(for='fullname') Full Name <span style="color:red;">*</span> :
               input#fullname.form-control(type='text', placeholder='eg: John Doe' name='fullname' ng-model="fullname")
             div.form-group
-              label(for="uploadKTP") National Identity Card (KTP)
+              label(for="uploadKTP") National Identity Card (KTP) <span style="color:red;">*</span>
               input(type="file" class="form-control-file" id="uploadKTP" name="ktpFile")
               small(class="form-text text-muted") Please upload your ID (KTP/Passport) for a faster registration process.
             div.form-group
@@ -114,10 +114,10 @@ block content
                   div(class="progress-bar")
                 a(class="multistep-dot")
                 
-            br
-            .alert.alert-success.hide(role='alert')
+            //br
+            //.alert.alert-success.hide(role='alert')
               | Success
-            br
+            //br
                 
             table(class="broadband-fo-register-summary")
               tr
